@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>五行数理</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../app.css">
+</head>
+
+<body>
+		<main role="main" class="my-auto ">
+        <form method="get" action="../search.php" class="text-center">
+            <input class="form-control mr-sm-2 col-md-4 offset-md-4" type="text" placeholder="请输入手机号码" name="phonenumber"  >
+            <button class="btn btn-outline-info button-search " type="submit">分析号码</button>
+          </form>
+        <div class="jumbotron">
+                    <div class="lead">
+                      <p>
+                          五行数理说明：<br/>号码{$num}的数理为<span class="green">XXX,<br/>{$datas['forecast_message']},</span>
+                          <br/><span class="small-font">其暗示的信息</span>：
+                      </p>
+                    </div>
+                    <h3 style="font-weight:bold">{$datas['implied_information']}</h3>
+                    <p class="small-font">
+                      诗云: {$datas['poetry_cloud']}
+                    </p>
+                    <!-- 幸运星 -->
+                      {if $datas['lucky_star']==4 } 
+                          <div>
+                              <span class="gray">幸运星：</span>
+                              <span class="red">★★★★</span><span class="gray">☆☆☆</span>
+                          </div>
+                          <div class="fz12">号码价值评估: <span>200.90<span></div>
+                      {elseif $datas['lucky_star']==6} 
+                          <div>
+                              <span class="gray">幸运星：</span>
+                              <span class="red">★★★★★★</span><span class="gray">☆</span>
+                          </div>
+                          <div class="fz12">号码价值评估: <span>¥500.90<span></div>
+                      {elseif $datas['lucky_star']==1} 
+                          <div>
+                              <span class="gray">幸运星：</span>
+                              <span class="red">★</span><span class="gray">☆☆☆☆☆☆</span>
+                          </div>
+                          <div class="fz12">号码价值评估: <span>¥21.90<span></div>
+                      {/if}
+                      <div class="fz12">号码{$num}的个性系数为{$datas['personality_coefficient']},主人性格类型：
+                        <span class="green">{$datas['personality_type']},</span>
+                        <br/>具体表现：{$datas['performance']}
+                      </div>
+        </div>  
+     </main>
+</body>
+</html>
